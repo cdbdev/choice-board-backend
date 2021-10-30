@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>CRUD actions</title>
+	<meta charset="utf-8" /> 
+	
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script>
+		// CORNER LOGIC
+		function getCornerInput() {
+			return {
+				id: document.getElementById('cornerID').value,
+				name: document.getElementById('cornerName').value,
+				avatar: document.getElementById('cornerAvatar').value,
+				visible: document.getElementById('cornerVisible').value
+			};
+		}
+		
+		function getChildInput() {
+			return {
+				id: document.getElementById('childID').value,
+				lastname: document.getElementById('childLastname').value,
+				firstname: document.getElementById('childFirstname').value,
+				avatar: document.getElementById('childAvatar').value,
+				position: document.getElementById('childPosition').value
+			};
+		}
+		
+		function sendPostCorner() {
+			var model = getCornerInput();
+			axios.post('http://localhost:3500/corner', model)
+			  .then(function(response){
+				console.log(response.data)
+			  })
+			  .catch(function (error) {
+				console.log(error);
+			  })
+			;
+		}		
+		
+		function sendDeleteCorner() {
+			var model = getCornerInput();
+			axios.delete('http://localhost:3500/corner', { params: model})
+			  .then(function(response){
+				console.log(response.data)
+			  })
+			  .catch(function (error) {
+				console.log(error);
+			  })
+			;
+		}
+		
+		function sendPutCorner() {
+			var model = getCornerInput();
+			axios.put('http://localhost:3500/corner', model)
+			  .then(function(response){
+				console.log(response.data)
+			  })
+			  .catch(function (error) {
+				console.log(error);
+			  })
+			;
+		}
+		
+		// CHILD LOGIC
+		function sendPostChild() {
+			var model = getChildInput();
+			axios.post('http://localhost:3500/child', model)
+			  .then(function(response){
+				console.log(response.data)
+			  })
+			  .catch(function (error) {
+				console.log(error);
+			  })
+			;
+		}
+		
+		function sendDeleteChild() {
+			var model = getChildInput();
+			axios.delete('http://localhost:3500/child', { params: model})
+			  .then(function(response){
+				console.log(response.data)
+			  })
+			  .catch(function (error) {
+				console.log(error);
+			  })
+			;
+		}
+		
+		function sendPutChild() {
+			var model = getChildInput();
+			axios.put('http://localhost:3500/child', model)
+			  .then(function(response){
+				console.log(response.data)
+			  })
+			  .catch(function (error) {
+				console.log(error);
+			  })
+			;
+		}
+		
+		function sendUpdatePosition() {
+			var model = {
+				arr: [
+					{ 	
+						id: document.getElementById('childIDPos').value,
+						position: document.getElementById('childPositionPos').value 
+					},
+					{ 	
+						id: document.getElementById('childID2Pos').value,
+						position: document.getElementById('childPosition2Pos').value 
+					}
+				]
+			};
+			
+			axios.post('http://localhost:3500/childposition', model)
+			  .then(function(response){
+				console.log(response.data)
+			  })
+			  .catch(function (error) {
+				console.log(error);
+			  })
+			;
+		}
+		
+		function sendInsertChildActivity() {
+			var model = {
+				child: document.getElementById('childActChild').value,
+				timestamp: document.getElementById('childActTimestamp').value,
+				corner: document.getElementById('childActCorner').value 
+			};
+			
+			axios.post('http://localhost:3500/childactivity', model)
+			  .then(function(response){
+				console.log(response.data)
+			  })
+			  .catch(function (error) {
+				console.log(error);
+			  })
+			;
+		}
+		
+		function getChartInfo() {
+			var model = getChildInput();
+			
+			axios.post('http://localhost:3500/chart', model)
+			  .then(function(response){
+				console.log(response.data)
+			  })
+			  .catch(function (error) {
+				console.log(error);
+			  })
+			;
+		}
+	</script>
+</head>
+<body>
+	<form>
+		ID: <input type="text" name="cornerID" id="cornerID" value="100">
+		Name: <input type="text" name="cornerName" id="cornerName" value="test">
+		Avatar: <input type="text" name="cornerAvatar" id="cornerAvatar" value="image.jpg">
+		Visible: <input type="text" name="cornerVisible" id="cornerVisible" value="Y"> </br>
+		
+		<button type="button" onclick="sendPostCorner()">Insert corner data</button>
+		<button type="button" onclick="sendDeleteCorner()">Delete corner data</button>
+		<button type="button" onclick="sendPutCorner()">Update corner data</button>
+	</form>
+	</br></br></br>
+	<form>
+		ID: <input type="text" name="childID" id="childID" value="300">
+		Lastname: <input type="text" name="childLastname" id="childLastname" value="Simpson">
+		Firstname: <input type="text" name="childFirstname" id="childFirstname" value="Homer">
+		Avatar: <input type="text" name="childAvatar" id="childAvatar" value="hs.jpg"> </br>
+		Position: <input type="text" name="childPosition" id="childPosition" value="2"> </br>
+		
+		<button type="button" onclick="sendPostChild()">Insert child data</button>
+		<button type="button" onclick="sendDeleteChild()">Delete child data</button>
+		<button type="button" onclick="sendPutChild()">Update child data</button>
+		<button type="button" onclick="getChartInfo()">get chart data</button>
+	</form>
+	</br></br></br>
+	<form>		
+		ID: <input type="text" name="childIDPos" id="childIDPos" value="1">		
+		Position: <input type="text" name="childPositionPos" id="childPositionPos" value="2"> </br>
+		ID: <input type="text" name="childID2Pos" id="childID2Pos" value="2">		
+		Position: <input type="text" name="childPosition2Pos" id="childPosition2Pos" value="2"> </br>
+		<button type="button" onclick="sendUpdatePosition()">Update positions</button>
+	</form>
+	</br></br></br>
+	<form>		
+		Child: <input type="text" name="childActChild" id="childActChild" value="1">		
+		Timestamp: <input type="text" name="childActTimestamp" id="childActTimestamp" value="2018-08-13 22:40:00">	
+		Corner:  <input type="text" name="childActCorner" id="childActCorner" value="2">	
+		<button type="button" onclick="sendInsertChildActivity()">insert child activity</button>
+	</form>
+</body>
+</html>
