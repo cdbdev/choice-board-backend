@@ -1,5 +1,7 @@
 # Choice-board-backend
-Backend code for Choice Board in Golang
+Backend code for Choice Board in Golang.
+
+> **REMARK**: The 'web' folder is not part of the source code itself, but necessary to run the application.
 
 # How-to
 
