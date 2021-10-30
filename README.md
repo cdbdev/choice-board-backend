@@ -1,7 +1,13 @@
 # Choice-board-backend
-Backend code for Choice Board in Golang.
 
-> **REMARK**: The 'web' folder is not part of the source code itself, but necessary to run the application.
+This repo contains the source code for the **Choice Board** application.
+
+It consists of 3 folders:
+- internal (source code of the application)
+- db (database used by application)
+- web (javascript bundle and static pages)
+
+Only the **'internal'** folder contains source code, the other 2 are necessary to run the application.
 
 # How-to
 
