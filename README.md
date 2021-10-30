@@ -1,6 +1,6 @@
 # Choice-board-backend
 
-This repo contains the source code for the **Choice Board** application.
+This repo contains the source code for the **Choice Board** BACKEND application.
 
 It consists of 3 folders:
 - internal (source code of the application)
